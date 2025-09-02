@@ -35,12 +35,11 @@ func newExchange(key string, url string) (*Exchange, error) {
 	accountAddr := crypto.PubkeyToAddress(*pubECDSA).Hex()
 
 	exchange := NewExchange(
+		NewInfo(url, true, nil, nil),
 		privateKey,
 		url,
-		nil, // Meta will be fetched automatically
 		"",
 		accountAddr,
-		nil, // SpotMeta will be fetched automatically
 	)
 
 	return exchange, nil

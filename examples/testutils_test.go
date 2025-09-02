@@ -21,12 +21,11 @@ func newTestExchange(t *testing.T) *hyperliquid.Exchange {
 
 	// Initialize test exchange
 	return hyperliquid.NewExchange(
+		hyperliquid.NewInfo(hyperliquid.MainnetAPIURL, true, nil, nil),
 		testPrivateKey,
 		hyperliquid.MainnetAPIURL,
-		nil,
 		vaultAddr,
 		crypto.PubkeyToAddress(testPrivateKey.PublicKey).Hex(),
-		nil,
 		hyperliquid.ExchangeOptDebugMode(),
 	)
 }

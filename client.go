@@ -91,7 +91,6 @@ func (c *Client) post(path string, payload any) ([]byte, error) {
 	if c.debug {
 		c.logger.WithFields(lol.Fields{
 			"status": resp.Status,
-			"body":   string(body),
 		}).Debug("HTTP response")
 	}
 

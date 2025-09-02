@@ -17,11 +17,10 @@ type Exchange struct {
 }
 
 func NewExchange(
+	info *Info,
 	privateKey *ecdsa.PrivateKey,
 	baseURL string,
-	meta *Meta,
 	vaultAddr, accountAddr string,
-	spotMeta *SpotMeta,
 	opts ...ExchangeOpt,
 ) *Exchange {
 	ex := &Exchange{
@@ -44,7 +43,7 @@ func NewExchange(
 	}
 
 	ex.client = NewClient(baseURL, clientOpts...)
-	ex.info = NewInfo(baseURL, true, meta, spotMeta, infoOpts...)
+	ex.info = info
 
 	return ex
 }

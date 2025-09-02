@@ -98,6 +98,12 @@ func NewInfo(baseURL string, skipWS bool, meta *Meta, spotMeta *SpotMeta, opts .
 	return info
 }
 
+func (i *Info) UpdateMapping(name string, asset int, szDecimals int) {
+	i.coinToAsset[name] = asset
+	i.nameToCoin[name] = name
+	i.assetToDecimal[asset] = szDecimals
+}
+
 func parseMetaResponse(resp []byte) (*Meta, error) {
 	var meta map[string]json.RawMessage
 	if err := json.Unmarshal(resp, &meta); err != nil {
